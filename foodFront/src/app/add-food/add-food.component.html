@@ -1,0 +1,75 @@
+
+<div class="container mt-2">
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+          <div class="input-group">
+            <div class="card" style="width: 39rem;align-content: center;border: none;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+               <form #foodForm="ngForm" (ngSubmit)="addFood(foodForm)">
+                <h1 style="padding-bottom: 5px;background-color: aqua;text-align: center;" *ngIf="text" >Add Food</h1>  
+              <h1 style="padding-bottom: 5px;background-color: aqua;text-align: center;" *ngIf="!text" >Update Food</h1> 
+                   <div class="form-group ">
+                          <label for="" class="font-weight-bold">Food Name</label>
+                           <input class="form-control" type="text" [(ngModel)]="food.foodName" name="foodName">
+                    
+                   </div>
+            
+                   <div class="form-group">
+                        <label for="" class="font-weight-bold">Food Category</label>
+                        <select class="form-control"  [(ngModel)]="food.foodCategory" name="foodCategory">
+                          <option value="Biryani">Biryani</option>
+                          <option value="Thali">Thali</option>
+                          <option value="Curry">Curry</option>
+                          <option value="Chinese">Chinese</option>
+                          <option value="Cake">Cake</option>
+                          <option value="Street Food">Street Food</option>
+                        </select>
+                    
+                </div>
+            
+                <div class="form-group ">
+                    <label for="" class="font-weight-bold">Hotel Name</label>
+                     <input class="form-control" type="text" [(ngModel)]="food.hotelName" name="hotelName">
+              
+                </div> 
+                   <div class="form-group">
+                    <label for="" class="font-weight-bold">Food Price</label>
+                           <input class="form-control" type="number" [(ngModel)]="food.foodPrice" name="foodPrice"> 
+                   </div>
+              
+                   <div class="form-group">
+                    <label for="" class="font-weight-bold">Food Discount Price</label>
+                           <input class="form-control" type="number"  [(ngModel)]="food.foodDiscountPrice" name="foodDiscountPrice">
+                   </div>
+                   
+                   <div class="form-group">
+                    <label for="" class="font-weight-bold">Food Images</label><br>
+                    <input type="file" multiple value="select" #selectFile (change)="onFileSelected($event)">
+                   </div>  
+               
+               <div class="form-group">
+                <label for="" class="font-weight-bold">Food Description</label>
+                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="food.foodDescription" name="foodDescription"></textarea>
+               </div>
+                
+               
+            
+               
+               
+                   
+                   <button class="btn btn-primary btn-block" type="submit" *ngIf="actionBtn">Add Food</button>
+
+                   <p class="alert alert-success" *ngIf="showMsg">
+                    <strong>Updated Successfully!</strong>
+      
+                    </p>
+                   <button class="btn btn-danger btn-block"  type="submit" *ngIf="!actionBtn">Update Food</button>
+               
+            </form>
+            </div>
+          </div>
+      </div>
+    
+    
+  </div>
+  
+  

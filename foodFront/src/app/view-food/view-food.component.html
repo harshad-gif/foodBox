@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 mb-4" >
+            <div class="card">
+                <img class="card-img-top" [src]="food.foodImage[0].url" alt="">
+            </div>
+        </div>
+    
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+    
+                <div class="card-body">
+                    <h1 class="card-title"> {{food.foodName}}</h1>
+                    <p class="card-text" style="font-size: medium;">
+                       Description: <br>
+                       {{food.foodDescription}}
+                    </p>
+                    <del style="color: gray;">Price ₹  {{food.foodPrice}}</del>
+                    <p  style="font-size:large;">Price : ₹  {{food.foodDiscountPrice}}</p>
+
+                    <button class="btn btn-danger btn-block" (click)="buy(food.foodId)">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+   

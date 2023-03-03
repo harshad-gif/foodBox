@@ -1,0 +1,74 @@
+
+
+<div class="container mt-5">
+    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background-color: rgb(10, 122, 132); color: white;">
+        <div class="row">
+           <div class="col-sm-6 mx-auto">
+            <form #orderForm="ngForm" (ngSubmit)="createTransactionAndPlaceOrder(orderForm)">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" [(ngModel)]="orderDetails.fullName" name="fullName">
+            </div>
+
+            <div class="form-group">
+                <label for="">Contact Number</label>
+                <input type="number" class="form-control" [(ngModel)]="orderDetails.contactNumber"  name="contactNumber">
+            </div>
+
+            <div class="form-group">
+                <label for="">Address</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="orderDetails.fullAddress"  name="fullAddress"></textarea>
+            </div>
+            <button class="btn btn-danger" type="submit"> place Order</button>
+          </form>
+           </div>
+
+           
+           <div class="col-sm-6 mx-auto" style="background-color: rgb(255, 200, 0);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <h1 class="text-center pb-4">Order Summary</h1>
+
+            <table class="table">
+                <thead>
+                  <tr>
+                   
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let food of foodDetails">
+                        <td>
+                         {{food.foodName}}
+                        </td>
+
+                        <td>
+                          {{food.foodDiscountPrice | currency:'INR'}}
+                        </td>
+
+                        <td>
+                            <select #quantity class="form-select form-control-sm" [ngModel]="getQuantity(food.foodId)" (change)="onQuantitChange(quantity.value,food.foodId)">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                              </select>
+                        </td>
+
+                        <td>{{getTotal(food.foodId,food.foodDiscountPrice) | currency:'INR'}}</td>
+                      </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>Total</td>
+                          <td>{{grandTotal() | currency:'INR'}}</td>
+                        </tr>
+                  
+                </tbody>
+              </table>
+           </div>
+          
+                
+        </div>
+    </div>
+</div>

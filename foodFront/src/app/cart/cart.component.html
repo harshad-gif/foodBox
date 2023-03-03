@@ -1,0 +1,45 @@
+
+<div class="container mx-auto pt-5"   style="background:white">
+    
+    
+           
+   
+  <button type="button" class="btn btn-success float-right mb-2" (click)="checkout()">Chekout</button>
+    <table class="table">
+        <thead class="table-dark">
+          <tr >
+            <th scope="col">Sr.no</th>
+            <th scope="col">Food Name</th>
+            <th scope="col">Food Description</th>
+           
+            <th scope="col"> Price</th>
+       
+            <th scope="col">Total Price</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let el of cartDetails let i = index
+          ">
+            <th scope="row">{{i+1}}</th>
+            <td>{{el.food.foodName}}</td>
+            <td>{{el.food.foodDescription}}</td>
+           
+            
+            <!-- <td><img  src="{{el.product.productImage}}" style="max-width: 20%;"></td> -->
+            <td>{{el.food.foodPrice | currency:'INR'}} <p>Discount:{{((el.food.foodPrice - el.food.foodDiscountPrice)/el.food.foodPrice) * 100 | number: '1.0-0'}}%</p></td>
+            <td>{{el.food.foodDiscountPrice | currency:'INR'}}</td>
+           
+            <td>
+              <button type="button" class="btn btn-danger btn-block" (click)="buy(el.food.foodId)">Buy</button>
+              <button type="button"  class="btn btn-warning btn-block" (click)="deleteCart(el.cartId)" >Delete</button>
+            </td>
+         
+        </tbody>
+      </table>
+</div>
+
+
+
+
+

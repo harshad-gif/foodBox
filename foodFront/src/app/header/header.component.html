@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:salmon;">
+    <a class="navbar-brand" href="#">Food Box[] </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/admin" *ngIf="userSer.roleMatch(['Admin'])">Admin Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+  
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/user" *ngIf="userSer.roleMatch(['User'])">Home</a>
+            </li> 
+          </ul>
+          
+  
+          <button type="button" class="btn btn-danger" style="color: white;" *ngIf="userSer.roleMatch(['User'])" routerLink="/cart">Cart<i class="bi bi-cart"></i></button>
+          <button *ngIf="!isLoggedIn()" class="btn btn-primary" routerLink="/login" style="background-color:purple;border-radius: 10px 5px;">Log In</button>
+          <button  *ngIf="isLoggedIn()" class="btn btn-primary ml-2"  (click)="logout()"  style="background-color: darkorange;border-radius: 10px 5px;">Log Out</button>
+         
+      </div>
+    </nav>
+  
+  
+  
+  

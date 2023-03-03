@@ -1,0 +1,53 @@
+
+
+  
+<div class="container">
+  <h2 class="text-left mt-5">All Food List</h2>
+  <button class="btn btn-danger mb-2" routerLink="/add">
+    Add Products+
+  </button>
+  <table class="table">
+    <thead>
+      <tr class="bg-primary text-white">
+        <th scope="col">Sr.No</th>
+        <th scope="col">Food Name</th>
+        <th scope="col">Food Category</th>
+        <th scope="col">Hotel Name</th>
+        <th scope="col">Food Description</th>
+        <th scope="col">Food Price</th>
+        <th scope="col">Food Discount Price</th>
+        <th scope="col">Food Image</th>
+        <th scope="col">Food Status</th>
+        <th scope="col">Action</th>
+        
+        
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr class=" text-dark" *ngFor="let en of foodDetails let i=index">
+
+        <td>{{i+1}}</td>
+        <td>{{en.foodName}}</td>
+        <td>{{en.foodCategory}}</td>
+        <td>{{en.hotelName}}</td>
+        <td>{{en.foodDescription}}</td>
+        <td>{{en.foodPrice}}</td>
+        <td>{{en.foodDiscountPrice}}</td>
+        <td><img [src]="en.foodImage[0].url" alt=""></td>
+        <td><button class="btn btn-danger">Enabled</button></td>
+        <td>
+        <button class="btn"   style="color: blue;" (click)="editFood(en.foodId)"><i class="bi bi-pen"></i>
+        </button> 
+        <button class="btn " style="color: red;" (click)="delete(en.foodId)"><i class="bi bi-trash"></i>
+        </button>
+      </td>
+    
+      
+          
+     
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
